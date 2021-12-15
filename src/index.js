@@ -1,3 +1,0 @@
-function bla() {
-    return 'bla';
-}

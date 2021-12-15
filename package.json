@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
+        "watch": "jest --watch *.js",
         "start": "webpack serve",
         "build": "NODE_ENV='production', webpack"
     },
@@ -19,11 +20,13 @@
     },
     "homepage": "https://github.com/Jestim/battleship#readme",
     "devDependencies": {
+        "@babel/preset-env": "^7.16.5",
         "babel-loader": "^8.2.3",
         "css-loader": "^6.5.1",
         "eslint": "^8.4.1",
         "eslint-config-prettier": "^8.3.0",
         "html-webpack-plugin": "^5.5.0",
+        "jest": "^27.4.5",
         "prettier": "2.5.1",
         "style-loader": "^3.3.1",
         "webpack": "^5.65.0",
