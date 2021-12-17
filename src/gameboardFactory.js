@@ -25,7 +25,7 @@ function createGameboard(numRows, numCollumns) {
         return ships;
     }
 
-    function placeAllShips() {
+    function placeAllShipsRandomly() {
         for (let i = 0; i < ships.length; ++i) {
             let randomCoordinate = getRandomCoordinate();
             let randomDirection = getRadnomDirection();
@@ -40,14 +40,14 @@ function createGameboard(numRows, numCollumns) {
     }
 
     function shipCanBePlaced(ship, coordinate, direction) {
-        if (direction == 'horisontal' && (coordinate.x + ship.length - 1) < 10) {
+        if (shipFitsHorisontally(ship, coordinate, direction)) {
             for (let i = coordinate.x; i < (coordinate.x + ship.length); ++i) {
                 if (grid[i][coordinate.y] != null) {
                     return false;
                 }
                 return true;
             }
-        } else if (direction == 'vertical' && (coordinate.y + ship.length - 1) < 10) {
+        } else if (shipFitsVertically(ship, coordinate, direction)) {
             for (let i = coordinate.y; i < (coordinate.y + ship.length); ++i) {
                 if (grid[coordinate.x][i] != null) {
                     return false;
@@ -58,20 +58,38 @@ function createGameboard(numRows, numCollumns) {
             return false;
     }
 
+    function shipFitsHorisontally(ship, coordinate, direction) {
+        if (direction === 'horisontal' && (coordinate.x + ship.length - 1) < 10)
+            return true;
+        else
+            return false;
+    }
+
+    function shipFitsVertically(ship, coordinate, direction) {
+        if (direction === 'vertical' && (coordinate.y + ship.length - 1) < 10)
+            return true;
+        else
+            return false;
+    }
+
     function placeShip(ship, coordinate, direction) {
-        for (let i = 0; i < ship.length; ++i) {
-            if (direction == 'horisontal') {
-                grid[coordinate.x + i][coordinate.y] = (ship.id + (i / 10));
-            } else if (direction == 'vertical') {
-                grid[coordinate.x][coordinate.y + i] = (ship.id + (i / 10));
+        if (shipCanBePlaced(ship, coordinate, direction)) {
+            for (let i = 0; i < ship.length; ++i) {
+                if (direction === 'horisontal') {
+                    grid[coordinate.x + i][coordinate.y] = (ship.id + (i / 10));
+                } else if (direction === 'vertical') {
+                    grid[coordinate.x][coordinate.y + i] = (ship.id + (i / 10));
+                }
             }
+        } else {
+            return 'Can\'t place ship there';
         }
     }
 
     function receiveAttack(coordinate) {
-        if (grid[coordinate.x][coordinate.y] == 'miss') {
+        if (grid[coordinate.x][coordinate.y] === 'miss') {
             return;
-        } else if (grid[coordinate.x][coordinate.y] == null) {
+        } else if (grid[coordinate.x][coordinate.y] === null) {
             recordMiss(coordinate);
         } else {
             const id = grid[coordinate.x][coordinate.y];
@@ -102,11 +120,23 @@ function createGameboard(numRows, numCollumns) {
         }
     }
 
+    function isSquareEmpty(coordinate) {
+        if (grid[coordinate.x][coordinate.y] === null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return {
         grid,
         ships,
+        placeAllShipsRandomly,
+        shipCanBePlaced,
+        placeShip,
         receiveAttack,
-        allShipsHaveSunk
+        allShipsHaveSunk,
+        isSquareEmpty
     };
 }
 

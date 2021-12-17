@@ -14,7 +14,15 @@ function getRadnomDirection() {
         return 'vertical';
 }
 
+function getCoordinateObject(x, y) {
+    return {
+        x,
+        y
+    };
+}
+
 export {
     getRandomCoordinate,
-    getRadnomDirection
+    getRadnomDirection,
+    getCoordinateObject
 };
