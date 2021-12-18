@@ -1,5 +1,5 @@
-import createGameboard from "./gameboardFactory.js";
-import getRandomCoordinate from './utils.js';
+import createGameboard from './gameboardFactory.js';
+import { getRandomCoordinate } from './utils.js';
 
 function createPlayer(playerName) {
     const gameboard = createGameboard(10, 10);

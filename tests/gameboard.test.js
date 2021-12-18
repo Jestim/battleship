@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
-import createGameboard from '../src/gameboardFactory.js';
-import createShip from '../src/shipFactory.js';
+import createGameboard from '../src/app/gameboardFactory.js';
+import createShip from '../src/app/shipFactory.js';
 
 
 // createGrid

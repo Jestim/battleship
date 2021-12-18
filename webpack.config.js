@@ -2,8 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: './src/index.js',
+    mode: 'development',
+    entry: './src/app/index.js',
     module: {
         rules: [{
                 test: /\.css$/i,
@@ -20,6 +20,8 @@ module.exports = {
         filename: 'main.js'
     },
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Battleship',
+        })
     ],
 };

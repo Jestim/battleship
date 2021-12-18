@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import createShip from '../src/shipFactory.js';
+import createShip from '../src/app/shipFactory.js';
 
 test('Test if ship is sunk', () => {
     const ship = createShip(4);

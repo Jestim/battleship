@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 17%, rgba(0, 212, 255, 1) 95%);
+    background-repeat: no-repeat;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem;
+    border-bottom: 1px solid rgb(247, 121, 121);
+}
+
+.header-text {
+    color: rgba(0, 212, 255, 1);
+    font-size: 4rem;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.player-area {
+    border: 1px solid white;
+}
+
+.player-name {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-decoration-line: underline;
+}
+
+.gameboard {
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+}
+
+.square {
+    border: 1px solid black;
+}

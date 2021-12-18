@@ -3,7 +3,7 @@ import {
     getRandomCoordinate,
     getRadnomDirection,
     getCoordinateObject
-} from '../src/utils.js';
+} from '../src/app/utils.js';
 
 test('Get an object with 2 props both between 0 and 9', () => {
     const randomCoordinate = getRandomCoordinate();

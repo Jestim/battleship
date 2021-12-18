@@ -1,7 +1,7 @@
 import { test, expect } from '@jest/globals';
-import createGameboard from '../src/gameboardFactory.js';
-import createPlayer from '../src/playerFactory.js';
-import createShip from '../src/shipFactory.js';
+import createGameboard from '../src/app/gameboardFactory.js';
+import createPlayer from '../src/app/playerFactory.js';
+import createShip from '../src/app/shipFactory.js';
 
 test('Returns a player object that owns a gameboard', () => {
     expect(JSON.stringify(createPlayer()))
