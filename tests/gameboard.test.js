@@ -138,3 +138,31 @@ test('Can not place ship if out of bounds vertically', () => {
     expect(gameboard.shipCanBePlaced(gameboard.ships[3], { x: 0, y: 8 }, 'vertical'))
         .toBe(false);
 });
+
+
+// reset
+test('Resets board, sets all squares to null', () => {
+    const emptyGameboard = createGameboard(10, 10);
+
+    const populatedGameboard = createGameboard(10, 10);
+    populatedGameboard.placeAllShipsRandomly();
+
+    populatedGameboard.reset();
+
+    expect(populatedGameboard.grid)
+        .toStrictEqual(emptyGameboard.grid);
+});
+
+test('Resets ships', () => {
+    const emptyGameboard = createGameboard(10, 10);
+
+    const populatedGameboard = createGameboard(10, 10);
+    populatedGameboard.placeShip(populatedGameboard.ships[3], { x: 0, y: 0 }, 'horisontal');
+
+    populatedGameboard.receiveAttack({ x: 1, y: 0 });
+
+    populatedGameboard.reset();
+
+    expect(JSON.stringify(populatedGameboard.ships))
+        .toStrictEqual(JSON.stringify(emptyGameboard.ships));
+});

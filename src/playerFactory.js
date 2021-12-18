@@ -23,7 +23,7 @@ function createPlayer(playerName) {
         name,
         gameboard,
         attack,
-        randomAttack
+        randomAttack,
     };
 }
 

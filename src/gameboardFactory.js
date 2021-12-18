@@ -128,6 +128,16 @@ function createGameboard(numRows, numCollumns) {
         }
     }
 
+    function reset() {
+        for (let i = 0; i < numRows; ++i)
+            for (let j = 0; j < numCollumns; ++j)
+                grid[i][j] = null;
+
+        for (let i = 0; i < 5; ++i)
+            ships[i] = createShip(i + 1, i);
+
+    }
+
     return {
         grid,
         ships,
@@ -136,7 +146,8 @@ function createGameboard(numRows, numCollumns) {
         placeShip,
         receiveAttack,
         allShipsHaveSunk,
-        isSquareEmpty
+        isSquareEmpty,
+        reset
     };
 }
 
