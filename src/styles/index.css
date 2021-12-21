@@ -52,3 +52,23 @@ body {
 .square {
     border: 1px solid black;
 }
+
+.ship0 {
+    background-color: blue;
+}
+
+.ship1 {
+    background-color: red;
+}
+
+.ship2 {
+    background-color: green;
+}
+
+.ship3 {
+    background-color: yellow;
+}
+
+.ship4 {
+    background-color: white;
+}

@@ -47,6 +47,23 @@ function createGameboardEl(player) {
         for (let j = 0; j < player.gameboard.grid[i].length; ++j) {
             const squareEl = document.createElement('div');
             squareEl.classList.add('square');
+            squareEl.id = player.gameboard.grid[i][j];
+
+
+            if (squareEl.id != 'null' && player.name != 'Computer') {
+                if (parseInt(squareEl.id) < 1) {
+                    squareEl.classList.add('ship0');
+                } else if (parseInt(squareEl.id) < 2) {
+                    squareEl.classList.add('ship1');
+                } else if (parseInt(squareEl.id) < 3) {
+                    squareEl.classList.add('ship2');
+                } else if (parseInt(squareEl.id) < 4) {
+                    squareEl.classList.add('ship3');
+                } else if (parseInt(squareEl.id) < 5) {
+                    squareEl.classList.add('ship4');
+                }
+            }
+
             gameboardEl.appendChild(squareEl);
         }
     }

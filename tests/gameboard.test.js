@@ -55,6 +55,7 @@ test('Returns false for square marked "miss"', () => {
         .toBe(false);
 });
 
+
 // placeShip
 test('Ship gets placed correctly horisontally on the grid', () => {
     const gameboard = createGameboard(10, 10);

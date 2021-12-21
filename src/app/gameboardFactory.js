@@ -40,23 +40,32 @@ function createGameboard(numRows, numCollumns) {
     }
 
     function shipCanBePlaced(ship, coordinate, direction) {
+        let freeSquares = 0;
+
         if (shipFitsHorisontally(ship, coordinate, direction)) {
             for (let i = coordinate.x; i < (coordinate.x + ship.length); ++i) {
-                if (grid[i][coordinate.y] != null) {
-                    return false;
+                if (grid[coordinate.y][i] === null) {
+                    freeSquares++;
                 }
-                return true;
             }
         } else if (shipFitsVertically(ship, coordinate, direction)) {
             for (let i = coordinate.y; i < (coordinate.y + ship.length); ++i) {
-                if (grid[coordinate.x][i] != null) {
-                    return false;
+                if (grid[i][coordinate.x] === null) {
+                    freeSquares++;
                 }
-                return true;
             }
-        } else
+        } else {
             return false;
+        }
+
+        if (freeSquares === ship.length) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
+
 
     function shipFitsHorisontally(ship, coordinate, direction) {
         if (direction === 'horisontal' && (coordinate.x + ship.length - 1) < 10)
@@ -76,13 +85,13 @@ function createGameboard(numRows, numCollumns) {
         if (shipCanBePlaced(ship, coordinate, direction)) {
             for (let i = 0; i < ship.length; ++i) {
                 if (direction === 'horisontal') {
-                    grid[coordinate.x + i][coordinate.y] = (ship.id + (i / 10));
+                    grid[coordinate.y][coordinate.x + i] = (ship.id + (i / 10));
                 } else if (direction === 'vertical') {
-                    grid[coordinate.x][coordinate.y + i] = (ship.id + (i / 10));
+                    grid[coordinate.y + i][coordinate.x] = (ship.id + (i / 10));
                 }
             }
         } else {
-            return 'Can\'t place ship there';
+            return console.log('Can\'t place ship there (placeShip())');
         }
     }
 
