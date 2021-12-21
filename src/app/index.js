@@ -3,12 +3,8 @@ import {
     createGameAreaEl,
     createHeaderEl
 } from './domRendering';
+import eventListeners from './eventListeners.js';
 import createPlayer from './playerFactory.js';
+import playGame from './gameLogic.js';
 
-const human = createPlayer('Human');
-const computer = createPlayer('Computer');
-human.gameboard.placeAllShipsRandomly();
-computer.gameboard.placeAllShipsRandomly();
-
-createHeaderEl();
-createGameAreaEl(human, computer);
+playGame();
