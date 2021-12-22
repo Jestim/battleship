@@ -1,8 +1,13 @@
 function createShip(numberOfSquares, id) {
 
-    let hitSquares = [];
-    for (let i = 0; i < numberOfSquares; ++i) {
-        hitSquares[i] = false;
+    const hitSquares = createHitSquares(numberOfSquares);
+
+    function createHitSquares(numberOfSquares) {
+        let hitSquaresArray = [];
+        for (let i = 0; i < numberOfSquares; ++i) {
+            hitSquaresArray[i] = false;
+        }
+        return hitSquaresArray;
     }
 
     function hit(squareToHit) {

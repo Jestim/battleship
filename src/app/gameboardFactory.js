@@ -65,8 +65,6 @@ function createGameboard(numRows, numCollumns) {
         }
     }
 
-
-
     function shipFitsHorisontally(ship, coordinate, direction) {
         if (direction === 'horisontal' && (coordinate.x + ship.length - 1) < 10)
             return true;
@@ -91,17 +89,17 @@ function createGameboard(numRows, numCollumns) {
                 }
             }
         } else {
-            return console.log('Can\'t place ship there (placeShip())');
+            return 'Can\'t place ship there';
         }
     }
 
     function receiveAttack(coordinate) {
-        if (grid[coordinate.x][coordinate.y] === 'miss') {
+        if (grid[coordinate.y][coordinate.x] === 'miss') {
             return;
-        } else if (grid[coordinate.x][coordinate.y] === null) {
+        } else if (grid[coordinate.y][coordinate.x] === null) {
             recordMiss(coordinate);
         } else {
-            const id = grid[coordinate.x][coordinate.y];
+            const id = grid[coordinate.y][coordinate.x];
             for (let i = 0; i < ships.length; ++i) {
                 if (parseInt(id) === ships[i].id) {
                     ships[i].hit((id * 10) % 10);
@@ -111,7 +109,7 @@ function createGameboard(numRows, numCollumns) {
     }
 
     function recordMiss(coordinate) {
-        grid[coordinate.x][coordinate.y] = 'miss';
+        grid[coordinate.y][coordinate.x] = 'miss';
     }
 
     function allShipsHaveSunk() {
@@ -130,7 +128,7 @@ function createGameboard(numRows, numCollumns) {
     }
 
     function isSquareEmpty(coordinate) {
-        if (grid[coordinate.x][coordinate.y] === null) {
+        if (grid[coordinate.y][coordinate.x] === null) {
             return true;
         } else {
             return false;

@@ -63,9 +63,9 @@ test('Ship gets placed correctly horisontally on the grid', () => {
 
     expect(gameboard.grid[0][0])
         .toBe(3.0);
-    expect(gameboard.grid[1][0])
+    expect(gameboard.grid[0][1])
         .toBe(3.1);
-    expect(gameboard.grid[2][0])
+    expect(gameboard.grid[0][2])
         .toBe(3.2);
 });
 
@@ -75,9 +75,9 @@ test('Ship gets placed correctly vertically on the grid', () => {
 
     expect(gameboard.grid[0][0])
         .toBe(3.0);
-    expect(gameboard.grid[0][1])
+    expect(gameboard.grid[1][0])
         .toBe(3.1);
-    expect(gameboard.grid[0][2])
+    expect(gameboard.grid[2][0])
         .toBe(3.2);
 });
 
@@ -99,6 +99,16 @@ test('Correct ship recieves an attack at the correct square', () => {
     expect(gameboard.ships[4].hitSquares[0])
         .toBe(true);
 });
+
+// test.skip('Correct ship recieves an attack at the correct square', () => {
+//     const gameboard = createGameboard(10, 10);
+//     gameboard.placeShip(gameboard.ships[4], { x: 0, y: 0 }, 'horisontal');
+
+//     gameboard.receiveAttack(4.3);
+
+//     expect(gameboard.ships[4].hitSquares[0])
+//         .toBe(true);
+// });
 
 // shipCanBePlaced
 test('Can be placed if squares are null', () => {

@@ -1,20 +1,38 @@
 import { initGameArea, displayResult } from './domRendering.js';
 import createPlayer from './playerFactory.js';
 
-function playGame() {
+const game = (() => {
+
     const human = createPlayer('Human');
-    human.gameboard.placeAllShipsRandomly();
     const computer = createPlayer('Computer');
-    computer.gameboard.placeAllShipsRandomly();
 
-    initGameArea(human, computer);
+    function init() {
+        human.gameboard.placeAllShipsRandomly();
+        computer.gameboard.placeAllShipsRandomly();
 
-    // displayResult('You win!');
-}
+        initGameArea(human, computer);
+    }
 
-function playRound() {
+    function playRound(e) {
+        console.log(e.target.id);
+        console.log(parseInt(e.target.id));
 
-}
+        if (e.target.id != 'null' && e.target.id != 'miss') {
+            e.target.classList.add('hit');
+        } else {
+            e.target.classList.add('miss');
+            e.target.id = 'miss';
+        }
+    }
 
+    function computerShot() {
 
-export default playGame;
+    }
+
+    return {
+        init,
+        playRound
+    };
+})();
+
+export default game;

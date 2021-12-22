@@ -1,10 +1,10 @@
-import eventListeners from './eventListeners.js';
+import computerGrideventListeners from './eventListeners.js';
 const bodyEl = document.querySelector('body');
 
 function initGameArea(human, computer) {
     createHeaderEl();
     createGameAreaEl(human, computer);
-    eventListeners();
+    computerGrideventListeners();
 }
 
 function createHeaderEl() {
